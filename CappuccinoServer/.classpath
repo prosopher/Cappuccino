@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry including="**/*.java" kind="src" path="src/main/java"/>
+	<classpathentry kind="var" path="M2_REPO/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="M2_REPO/org/json/org.json/chargebee-1.0/org.json-chargebee-1.0.jar"/>
+	<classpathentry kind="lib" path="libs/cappuccino.jar"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

@@ -1,0 +1,316 @@
+<requests>
+   <request name="AnswerToUser">
+      <item>
+         <type>POST</type>
+         <endpoint>http://dmserver1.kaist.ac.kr:8080/ExpertRecommender/api/reply_question</endpoint>
+         <cookieNeedLoaded>true</cookieNeedLoaded>
+         <cookieNeedSaved>false</cookieNeedSaved>
+         <errorKeyAlwaysReturned>false</errorKeyAlwaysReturned>
+         <ssErrorCheckKey>err_msg</ssErrorCheckKey>
+         <request_map>
+            <variable name="toId">to_username</variable>
+            <variable name="answer">content</variable>
+            <variable name="question">origin_content</variable>
+            <variable name="questionId">question_id</variable>
+         </request_map>
+         <result_map>
+            <variable name="errorMsg">err_msg</variable>
+            <variable name="msg">msg</variable>
+         </result_map>
+      </item>
+   </request>
+   <request name="AskToExpert">
+      <item>
+         <type>POST</type>
+         <endpoint>http://dmserver1.kaist.ac.kr:8080/ExpertRecommender/api/request_expert</endpoint>
+         <cookieNeedLoaded>true</cookieNeedLoaded>
+         <cookieNeedSaved>false</cookieNeedSaved>
+         <errorKeyAlwaysReturned>false</errorKeyAlwaysReturned>
+         <ssErrorCheckKey>err_msg</ssErrorCheckKey>
+         <request_map>
+            <variable name="toId">to_username[]</variable>
+            <variable name="question">content</variable>
+         </request_map>
+         <result_map>
+            <variable name="errorMsg">err_msg</variable>
+            <variable name="msg">msg</variable>
+         </result_map>
+      </item>
+   </request>
+   <request name="ChangePassword">
+      <item>
+         <type>POST</type>
+         <endpoint>http://dmserver1.kaist.ac.kr:8080/ExpertRecommender/api/update_user</endpoint>
+         <cookieNeedLoaded>true</cookieNeedLoaded>
+         <cookieNeedSaved>false</cookieNeedSaved>
+         <errorKeyAlwaysReturned>true</errorKeyAlwaysReturned>
+         <ssErrorCheckKey>code</ssErrorCheckKey>
+         <ssErrorHitValue>0</ssErrorHitValue>
+         <request_map>
+            <variable name="pwNew">passwd</variable>
+         </request_map>
+         <result_map>
+            <variable name="code">code</variable>
+            <variable name="msg">msg</variable>
+         </result_map>
+      </item>
+   </request>
+   <request name="CheckDuplicateId">
+      <item>
+         <type>POST</type>
+         <endpoint>http://dmserver1.kaist.ac.kr:8080/ExpertRecommender/api/exist_user</endpoint>
+         <cookieNeedLoaded>true</cookieNeedLoaded>
+         <cookieNeedSaved>false</cookieNeedSaved>
+         <errorKeyAlwaysReturned>true</errorKeyAlwaysReturned>
+         <ssErrorCheckKey>code</ssErrorCheckKey>
+         <ssErrorHitValue>0</ssErrorHitValue>
+         <request_map>
+            <variable name="id">id</variable>
+         </request_map>
+         <result_map>
+            <variable name="code">code</variable>
+            <variable name="duplicate">exist</variable>
+            <variable name="msg">msg</variable>
+         </result_map>
+      </item>
+   </request>
+   <request name="GetAnswer">
+      <item>
+         <type>GET</type>
+         <endpoint>http://dmserver1.kaist.ac.kr:8080/ExpertRecommender/api/get_replies</endpoint>
+         <cookieNeedLoaded>true</cookieNeedLoaded>
+         <cookieNeedSaved>false</cookieNeedSaved>
+         <errorKeyAlwaysReturned>false</errorKeyAlwaysReturned>
+         <ssErrorCheckKey>err_msg</ssErrorCheckKey>
+         <result_map>
+            <variable name="errorMsg">err_msg</variable>
+         </result_map>
+      </item>
+   </request>
+   <request name="GetExpert">
+      <item>
+         <type>GET</type>
+         <endpoint>http://dmserver1.kaist.ac.kr:8080/ExpertRecommender/api/ask</endpoint>
+         <cookieNeedLoaded>true</cookieNeedLoaded>
+         <cookieNeedSaved>false</cookieNeedSaved>
+         <errorKeyAlwaysReturned>false</errorKeyAlwaysReturned>
+         <ssErrorCheckKey>err_msg</ssErrorCheckKey>
+         <request_map>
+            <variable name="qcategory">qcategory</variable>
+            <variable name="location">location</variable>
+            <variable name="venue">venue</variable>
+            <variable name="category">category</variable>
+            <variable name="time">time</variable>
+            <variable name="detail">detail</variable>
+         </request_map>
+         <result_map>
+            <variable name="errorMsg">err_msg</variable>
+            <variable name="experts">experts</variable>
+         </result_map>
+      </item>
+   </request>
+   <request name="GetQuestion">
+      <item>
+         <type>GET</type>
+         <endpoint>http://dmserver1.kaist.ac.kr:8080/ExpertRecommender/api/get_questions</endpoint>
+         <cookieNeedLoaded>true</cookieNeedLoaded>
+         <cookieNeedSaved>false</cookieNeedSaved>
+         <errorKeyAlwaysReturned>false</errorKeyAlwaysReturned>
+         <ssErrorCheckKey>err_msg</ssErrorCheckKey>
+         <request_map>
+            <variable name="offset">offset</variable>
+            <variable name="limit">limit</variable>
+         </request_map>
+         <result_map>
+            <variable name="errorMsg">err_msg</variable>
+            <variable name="offset">offset</variable>
+            <variable name="limit">limit</variable>
+            <variable name="nextTo">next_to</variable>
+            <variable name="questions">questions</variable>
+         </result_map>
+      </item>
+   </request>
+   <request name="InitPassword">
+      <item>
+         <type>GET</type>
+         <endpoint>http://dmserver1.kaist.ac.kr:8080/ExpertRecommender/api/init_pw</endpoint>
+         <cookieNeedLoaded>false</cookieNeedLoaded>
+         <cookieNeedSaved>false</cookieNeedSaved>
+         <errorKeyAlwaysReturned>true</errorKeyAlwaysReturned>
+         <ssErrorCheckKey>code</ssErrorCheckKey>
+         <ssErrorHitValue>0</ssErrorHitValue>
+         <request_map>
+            <variable name="id">email</variable>
+         </request_map>
+         <result_map>
+            <variable name="code">code</variable>
+            <variable name="exist">exist</variable>
+            <variable name="msg">msg</variable>
+         </result_map>
+      </item>
+   </request>
+   <request name="Join">
+      <item>
+         <type>POST</type>
+         <endpoint>http://dmserver1.kaist.ac.kr:8080/ExpertRecommender/api/signup</endpoint>
+         <cookieNeedLoaded>false</cookieNeedLoaded>
+         <cookieNeedSaved>false</cookieNeedSaved>
+         <errorKeyAlwaysReturned>false</errorKeyAlwaysReturned>
+         <ssErrorCheckKey>err_msg</ssErrorCheckKey>
+         <request_map>
+            <variable name="id">email</variable>
+            <variable name="pw">passwd</variable>
+            <variable name="username">realname</variable>
+            <variable name="location">location</variable>
+            <variable name="accessTokenFacebook">fb_access_token</variable>
+            <variable name="accessTokenFoursquare">fs_access_token</variable>
+         </request_map>
+         <result_map>
+            <variable name="errorMsg">err_msg</variable>
+            <variable name="msg">msg</variable>
+         </result_map>
+      </item>
+   </request>
+   <request name="LinkSocial">
+      <item>
+         <type>POST</type>
+         <endpoint>http://dmserver1.kaist.ac.kr:8080/ExpertRecommender/api/connect_social</endpoint>
+         <cookieNeedLoaded>true</cookieNeedLoaded>
+         <cookieNeedSaved>false</cookieNeedSaved>
+         <errorKeyAlwaysReturned>true</errorKeyAlwaysReturned>
+         <ssErrorCheckKey>code</ssErrorCheckKey>
+         <ssErrorHitValue>0</ssErrorHitValue>
+         <request_map>
+            <variable name="socialType">social_type</variable>
+            <variable name="accessToken">token</variable>
+         </request_map>
+         <result_map>
+            <variable name="code">code</variable>
+            <variable name="msg">msg</variable>
+         </result_map>
+      </item>
+   </request>
+   <request name="Login">
+      <item>
+         <type>POST</type>
+         <endpoint>http://dmserver1.kaist.ac.kr:8080/ExpertRecommender/j_spring_security_check</endpoint>
+         <cookieNeedLoaded>false</cookieNeedLoaded>
+         <cookieNeedSaved>true</cookieNeedSaved>
+         <errorKeyAlwaysReturned>false</errorKeyAlwaysReturned>
+         <ssErrorCheckKey>err_msg</ssErrorCheckKey>
+         <request_map>
+            <variable name="id">j_username</variable>
+            <variable name="pw">j_password</variable>
+         </request_map>
+         <result_map>
+            <variable name="errorMsg">err_msg</variable>
+            <variable name="id">email</variable>
+            <variable name="username">realname</variable>
+            <variable name="location">location</variable>
+            <variable name="accessTokenFacebook">fb_access_token</variable>
+            <variable name="accessTokenFoursquare">fs_access_token</variable>
+            <variable name="gcmRegId">gcm_reg_id</variable>
+         </result_map>
+      </item>
+   </request>
+   <request name="Logout">
+      <item>
+         <type>POST</type>
+         <endpoint>http://dmserver1.kaist.ac.kr:8080/ExpertRecommender/j_spring_security_logout</endpoint>
+         <cookieNeedLoaded>true</cookieNeedLoaded>
+         <cookieNeedSaved>false</cookieNeedSaved>
+         <errorKeyAlwaysReturned>false</errorKeyAlwaysReturned>
+         <ssErrorCheckKey>err_msg</ssErrorCheckKey>
+         <result_map>
+            <variable name="errorMsg">err_msg</variable>
+         </result_map>
+      </item>
+   </request>
+   <request name="MatchPw">
+      <item>
+         <type>GET</type>
+         <endpoint>http://dmserver1.kaist.ac.kr:8080/ExpertRecommender/api/verified_pw</endpoint>
+         <cookieNeedLoaded>true</cookieNeedLoaded>
+         <cookieNeedSaved>false</cookieNeedSaved>
+         <errorKeyAlwaysReturned>true</errorKeyAlwaysReturned>
+         <ssErrorCheckKey>code</ssErrorCheckKey>
+         <ssErrorHitValue>0</ssErrorHitValue>
+         <request_map>
+            <variable name="pwOrg">passwd</variable>
+         </request_map>
+         <result_map>
+            <variable name="code">code</variable>
+            <variable name="same">isSame</variable>
+            <variable name="msg">msg</variable>
+         </result_map>
+      </item>
+   </request>
+   <request name="Me">
+      <item>
+         <type>GET</type>
+         <endpoint>http://dmserver1.kaist.ac.kr:8080/ExpertRecommender/api/signin_success</endpoint>
+         <cookieNeedLoaded>true</cookieNeedLoaded>
+         <cookieNeedSaved>false</cookieNeedSaved>
+         <errorKeyAlwaysReturned>false</errorKeyAlwaysReturned>
+         <ssErrorCheckKey>err_msg</ssErrorCheckKey>
+         <result_map>
+            <variable name="errorMsg">err_msg</variable>
+            <variable name="id">email</variable>
+            <variable name="username">realname</variable>
+            <variable name="location">location</variable>
+            <variable name="accessTokenFacebook">fb_access_token</variable>
+            <variable name="accessTokenFoursquare">fs_access_token</variable>
+            <variable name="gcmRegId">gcm_reg_id</variable>
+         </result_map>
+      </item>
+   </request>
+   <request name="RegisterGCM">
+      <item>
+         <type>POST</type>
+         <endpoint>http://dmserver1.kaist.ac.kr:8080/ExpertRecommender/api/post_gcm_reg_id</endpoint>
+         <cookieNeedLoaded>true</cookieNeedLoaded>
+         <cookieNeedSaved>false</cookieNeedSaved>
+         <errorKeyAlwaysReturned>false</errorKeyAlwaysReturned>
+         <ssErrorCheckKey>err_msg</ssErrorCheckKey>
+         <request_map>
+            <variable name="gcmRegId">gcm_reg_id</variable>
+         </request_map>
+         <result_map>
+            <variable name="errorMsg">err_msg</variable>
+            <variable name="msg">msg</variable>
+         </result_map>
+      </item>
+   </request>
+   <request name="UnlinkSocial">
+      <item>
+         <type>POST</type>
+         <endpoint>http://dmserver1.kaist.ac.kr:8080/ExpertRecommender/api/disconnect_social</endpoint>
+         <cookieNeedLoaded>true</cookieNeedLoaded>
+         <cookieNeedSaved>false</cookieNeedSaved>
+         <errorKeyAlwaysReturned>true</errorKeyAlwaysReturned>
+         <ssErrorCheckKey>code</ssErrorCheckKey>
+         <ssErrorHitValue>0</ssErrorHitValue>
+         <request_map>
+            <variable name="socialType">social_type</variable>
+         </request_map>
+         <result_map>
+            <variable name="code">code</variable>
+            <variable name="msg">msg</variable>
+         </result_map>
+      </item>
+   </request>
+   <request name="UnregisterGCM">
+      <item>
+         <type>POST</type>
+         <endpoint>http://dmserver1.kaist.ac.kr:8080/ExpertRecommender/api/delete_user</endpoint>
+         <cookieNeedLoaded>true</cookieNeedLoaded>
+         <cookieNeedSaved>false</cookieNeedSaved>
+         <errorKeyAlwaysReturned>false</errorKeyAlwaysReturned>
+         <ssErrorCheckKey>err_msg</ssErrorCheckKey>
+         <result_map>
+            <variable name="errorMsg">err_msg</variable>
+            <variable name="msg">msg</variable>
+         </result_map>
+      </item>
+   </request>
+</requests>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 쿠키 SP 관련 -->
+    <string name="COOKIE_KEY_NAME">COOKIE_KEY_NAME</string>
+    <string name="COOKIE_KEY_VALUE">COOKIE_KEY_VALUE</string>
+    <string name="COOKIE_KEY_DOMAIN">COOKIE_KEY_DOMAIN</string>
+
+</resources>

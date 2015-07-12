@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Cappuccino</string>
+    <string name="progress_dialog_test_activity_btn_label">ProgressDialogTestActivity</string>
+    <string name="log_test_activity_btn_label">LogTestActivity</string>
+    <string name="meta_manager_test_activity_btn_label">MetaManagerTestActivity</string>
+    <string name="keyword_layout_test_activity_btn_label">KeywordLayoutTestActivity</string>
+
+</resources>

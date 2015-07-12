@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".TestActivity" >
+
+    <com.cappuccino.autoscaling.view.AutoScalingKeywordFirstLetterView
+        android:id="@+id/kfll0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0099CC"
+        android:textSize="30px" />
+
+    <com.cappuccino.autoscaling.view.AutoScalingKeywordEditText
+        android:id="@+id/ketl0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40px" />
+
+    <com.cappuccino.autoscaling.view.AutoScalingKeywordFirstLetterView
+        android:id="@+id/kfll1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0099CC"
+        android:textSize="50px" />
+
+    <com.cappuccino.autoscaling.view.AutoScalingKeywordEditText
+        android:id="@+id/ketl1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="60px" />
+
+</LinearLayout>

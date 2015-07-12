@@ -1,0 +1,34 @@
+<requests>
+   <common_map>
+      <variable name="msgType">CODE</variable>
+   </common_map>
+   <request name="receive_question">
+      <item>
+         <result_map>
+            <variable name="question">content</variable>
+            <variable name="collapseKey">collapse_key</variable>
+            <variable name="from">from</variable>
+            <variable name="questionId">question_id</variable>
+            <variable name="fromId">from_username</variable>
+            <variable name="fromUsername">from_realname</variable>
+            <variable name="toId">to_username</variable>
+            <variable name="toUsername">to_realname</variable>
+         </result_map>
+      </item>
+   </request>
+   <request name="receive_answer">
+      <item>
+         <result_map>
+            <variable name="answer">content</variable>
+            <variable name="collapseKey">collapse_key</variable>
+            <variable name="from">from</variable>
+            <variable name="answerId">reply_id</variable>
+            <variable name="question">originContent</variable>
+            <variable name="fromId">from_username</variable>
+            <variable name="fromUsername">from_realname</variable>
+            <variable name="toId">to_username</variable>
+            <variable name="toUsername">to_realname</variable>
+         </result_map>
+      </item>
+   </request>
+</requests>

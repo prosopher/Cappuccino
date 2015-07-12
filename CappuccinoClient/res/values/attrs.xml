@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="typeface">
+        <enum name="normal" value="0" />
+        <enum name="sans" value="1" />
+        <enum name="serif" value="2" />
+        <enum name="monospace" value="3" />
+        <enum name="nanum_barun_gothic" value="4" />
+    </attr>
+    <attr name="debuggable" format="boolean" />
+
+    <declare-styleable name="AutoScalingFragmentLinearLayout">
+        <attr name="typeface" />
+        <attr name="debuggable" />
+    </declare-styleable>
+    <declare-styleable name="AutoScalingFragmentRelativeLayout">
+        <attr name="typeface" />
+        <attr name="debuggable" />
+    </declare-styleable>
+    <declare-styleable name="AutoScalingLinearLayout">
+        <attr name="typeface" />
+        <attr name="debuggable" />
+    </declare-styleable>
+    <declare-styleable name="AutoScalingRelativeLayout">
+        <attr name="typeface" />
+        <attr name="debuggable" />
+    </declare-styleable>
+    <declare-styleable name="TimeRangePreference">
+        <attr name="dialog_title_begin" format="string" />
+        <attr name="dialog_title_end" format="string" />
+    </declare-styleable>
+    <declare-styleable name="AutoScalingKeywordView">
+        <attr name="android:textSize" />
+    </declare-styleable>
+    <declare-styleable name="RatingBar">
+        <attr name="android:layout_height" />
+        <attr name="android:clickable" />
+        <attr name="star_off" format="reference" />
+        <attr name="star_on" format="reference" />
+    </declare-styleable>
+
+</resources>
