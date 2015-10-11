@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ReportServlet extends BaseServlet {
 	private static final long serialVersionUID = -7362510327516238856L;
 
-	private final static String LOG_DIR = "C:\\Users\\Administrator\\Desktop\\Log 분석\\history\\cloudlet";
+	private static final String LOG_DIR = "C:\\Users\\Administrator\\Desktop\\Log 분석\\history\\cloudlet";
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
