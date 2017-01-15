@@ -11,11 +11,10 @@ public final class LogConfig {
 	private LogConfig() {
 	}
 
-	public static String serverHostName;
+	public static String serverHostAddr;
 
-	public static void initialize(Context context, String serverHostName) {
-
-		LogConfig.serverHostName = serverHostName;
+	public static void initialize(Context context, String serverHostAddr) {
+		LogConfig.serverHostAddr = serverHostAddr;
 	}
 
 }
