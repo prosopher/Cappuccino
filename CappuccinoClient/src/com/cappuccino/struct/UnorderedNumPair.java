@@ -8,16 +8,12 @@ public class UnorderedNumPair<N extends Number> extends OrderedNumPair<N> {
 
 	public UnorderedNumPair(N first, N second) {
 		super(first, second);
-		reset(first, second);
-	}
-
-	public void reset(N first, N second) {
 		// 순서를 없애기 위해 오름차순 배치
 		// Number 는 Comparable 이 아니므로 BigDecimal 이용
 		// https://stackoverflow.com/questions/2683202/comparing-the-values-of-two-generic-numbers
-		boolean firstGreater = new BigDecimal(first.toString()).compareTo(new BigDecimal(second.toString())) < 0;
-		this.first = firstGreater ? first : second;
-		this.second = firstGreater ? second : first;
+		boolean firstSmaller = new BigDecimal(first.toString()).compareTo(new BigDecimal(second.toString())) < 0;
+		this.first = firstSmaller ? first : second;
+		this.second = firstSmaller ? second : first;
 	}
 
 	public static void main(String[] args) {
