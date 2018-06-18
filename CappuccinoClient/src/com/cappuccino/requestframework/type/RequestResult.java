@@ -19,6 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.cappuccino.requestframework.RequestHelper;
+import com.cappuccino.util.EncodeUtil;
 import com.cappuccino.requestframework.IMetaManager;
 
 // JSON Object 인 경우 쉽게 결과를 분석할 수 있다.
@@ -40,7 +41,6 @@ public class RequestResult {
 	private String naReason;
 
 	public RequestResult(RequestHelper requestHelper, int errorStatusCode) {
-
 		// 연결 에러가 있을 때 사용하는 생성자
 
 		// 매개변수 검사
@@ -97,8 +97,7 @@ public class RequestResult {
 		}
 
 		// 에러 예측 상황을 구분하기 위한 값 추출
-		boolean errorKeyAlwaysReturned = requestHelper
-				.isErrorKeyAlwaysReturned();
+		boolean errorKeyAlwaysReturned = requestHelper.isErrorKeyAlwaysReturned();
 		String ssErrorCheckKey = requestHelper.getSSErrorCheckKey();
 		String ssErrorHitValue = requestHelper.getSSErrorHitValue();
 
@@ -121,8 +120,7 @@ public class RequestResult {
 
 				// 서버 에러 검사 키에 대응하는 값이 있는 지 검사한다.
 				try {
-					this.errorMsg = this.parsedJSONObj
-							.getString(ssErrorCheckKey);
+					this.errorMsg = this.parsedJSONObj.getString(ssErrorCheckKey);
 
 					// 서버 에러가 있을 경우
 					this.errorType = SERVER_ERROR;
@@ -150,8 +148,7 @@ public class RequestResult {
 					// 서버의 실제 반환 값과, 주어진 서버 에러 검출 값을 비교한다.
 					String ssActualErrorCheckValue;
 					try {
-						ssActualErrorCheckValue = this.parsedJSONObj
-								.getString(ssErrorCheckKey);
+						ssActualErrorCheckValue = this.parsedJSONObj.getString(ssErrorCheckKey);
 					} catch (JSONException e) {
 						// 서버 에러 검사 키가 실제 반환 결과에 없는 경우
 						// => 서버 에러로 간주하고 실제 반환 결과를 저장
@@ -201,25 +198,26 @@ public class RequestResult {
 		return errorMsg;
 	}
 
-	public String getValue(String csVariableKey) {
-
+	public String getValue(String csKey) {
 		// 값이 있는지 검사한다.
 		String value = null;
 		try {
 			// 값이 있을 경우
 			IMetaManager metaManager = requestHelper.getMetaManager();
-			String ssVariableKey = metaManager.getResultSs(
-					requestHelper.getRequestName(), csVariableKey);
-			value = parsedJSONObj.getString(ssVariableKey);
+			String ssKey = metaManager.getResultSs(requestHelper.getRequestName(), csKey);
+			value = parsedJSONObj.getString(ssKey);
 		} catch (JSONException e) {
 			// 값이 없을 경우 기본값 null 사용
 		}
-
 		return value;
 	}
 
 	public String getRawResult() {
 		return rawResult;
+	}
+
+	public Object getDecodedResult() {
+		return EncodeUtil.decodeFromUrlBase64(rawResult);
 	}
 
 	@Override

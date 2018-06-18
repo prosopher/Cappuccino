@@ -15,9 +15,6 @@
  */
 package com.cappuccino.requestframework;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-
 import com.cappuccino.requestframework.type.RequestParam;
 
 public class GetRequestHelper extends RequestHelper {
@@ -27,27 +24,16 @@ public class GetRequestHelper extends RequestHelper {
 	}
 
 	public String getEndpointWithParams() {
-
 		// 요청주소 생성
 		String addr = getEndpoint() + "?";
 
 		// 매개변수 추가
 		for (RequestParam param : params) {
-			if (param.getValue().length() > 0) {
-				// 매개변수 값이 있을 경우 변환 작업 시작
-				try {
-					String encodedPair = param.getSSVariableKey() + "="
-							+ URLEncoder.encode(param.getValue(), "UTF-8");
-					addr += encodedPair + "&";
-				} catch (UnsupportedEncodingException e) {
-					throw new RuntimeException(e);
-				}
-			}
+			addr += param.getSsKey() + "=" + param.getValue() + "&";
 		}
 
 		// 마지막 물음표나 앰퍼샌드 제거
 		addr = addr.substring(0, addr.length() - 1);
-
 		return addr;
 	}
 

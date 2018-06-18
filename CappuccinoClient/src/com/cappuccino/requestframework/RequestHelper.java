@@ -15,20 +15,18 @@
  */
 package com.cappuccino.requestframework;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import com.cappuccino.requestframework.type.RequestParam;
+import com.cappuccino.util.EncodeUtil;
 
 public class RequestHelper {
-
-	// 생성자 부분
-	// /////////////////////////////////////////////////////////////////////////////////////////
 
 	protected IMetaManager metaManager;
 	private String requestName;
 
 	protected RequestHelper(String requestName, IMetaManager metaManager) {
-		// MetaManager 생성
 		this.metaManager = metaManager;
 		this.requestName = requestName;
 	}
@@ -56,13 +54,15 @@ public class RequestHelper {
 
 	protected ArrayList<RequestParam> params = new ArrayList<RequestParam>();
 
-	public void add(String csVariableKey, String value) {
+	public void add(String csKey, String value) {
+		String ssKey = metaManager.getRequestSs(requestName, csKey);
+		RequestParam param = new RequestParam(csKey, ssKey, value);
+		params.add(param);
+	}
 
-		// MetaManager 에서 server 변수명 추출 후 매개 변수 관련 정보 추가
-		String ssVariableKey = metaManager.getRequestSs(requestName,
-				csVariableKey);
-		RequestParam param = new RequestParam(csVariableKey, ssVariableKey,
-				value);
+	public void addEncoded(String csKey, Serializable value) {
+		String ssKey = metaManager.getRequestSs(requestName, csKey);
+		RequestParam param = new RequestParam(csKey, ssKey, EncodeUtil.encodeToUrlBase64(value));
 		params.add(param);
 	}
 
@@ -115,16 +115,11 @@ public class RequestHelper {
 		sb.append(" \n");
 		sb.append("요청 공통 매개변수\n");
 		sb.append("요청 타입 ( type ) : " + getType() + "\n");
-		sb.append("쿠키 불러오기? ( cookieNeedLoaded ) : " + doesCookieNeedLoaded()
-				+ "\n");
-		sb.append("쿠키 저장하기? ( cookieNeedSaved ) : " + doesCookieNeedSaved()
-				+ "\n");
-		sb.append("에러 키 항상 반환? ( errorKeyAlwaysReturned ) : "
-				+ isErrorKeyAlwaysReturned() + "\n");
-		sb.append("서버 에러 검사 키 ( ssErrorCheckKey ) : " + getSSErrorCheckKey()
-				+ "\n");
-		sb.append("서버 에러 검출 값 ( ssErrorHitValue ) : " + getSSErrorHitValue()
-				+ "\n");
+		sb.append("쿠키 불러오기? ( cookieNeedLoaded ) : " + doesCookieNeedLoaded() + "\n");
+		sb.append("쿠키 저장하기? ( cookieNeedSaved ) : " + doesCookieNeedSaved() + "\n");
+		sb.append("에러 키 항상 반환? ( errorKeyAlwaysReturned ) : " + isErrorKeyAlwaysReturned() + "\n");
+		sb.append("서버 에러 검사 키 ( ssErrorCheckKey ) : " + getSSErrorCheckKey() + "\n");
+		sb.append("서버 에러 검출 값 ( ssErrorHitValue ) : " + getSSErrorHitValue() + "\n");
 
 		sb.append(" \n");
 		sb.append("요청 주소" + "\n");

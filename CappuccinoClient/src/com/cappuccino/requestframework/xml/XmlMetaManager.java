@@ -69,14 +69,14 @@ public class XmlMetaManager implements IMetaManager {
 	}
 
 	@Override
-	public String getCommonSs(String csVariableKey) {
+	public String getCommonSs(String csKey) {
 
 		// 초기화 검사
 		if (commonMap == null) {
 			throw new RuntimeException("commonMap 초기화 안됨");
 		}
 
-		return getFromVariableMap(commonMap, csVariableKey);
+		return getFromVariableMap(commonMap, csKey);
 	}
 
 	@Override
@@ -90,8 +90,7 @@ public class XmlMetaManager implements IMetaManager {
 		// requestName 에 대응하는 값 추출
 		Request a = requestMap.get(requestName);
 		if (a == null) {
-			throw new RuntimeException("requestName ( " + requestName
-					+ " ) 에 대응하는 값 이 없습니다.");
+			throw new RuntimeException("requestName ( " + requestName + " ) 에 대응하는 값 이 없습니다.");
 		}
 
 		// type 추출 (Optional 이므로 에러 검사 안함)
@@ -109,8 +108,7 @@ public class XmlMetaManager implements IMetaManager {
 		// requestName 에 대응하는 값 추출
 		Request a = requestMap.get(requestName);
 		if (a == null) {
-			throw new RuntimeException("requestName ( " + requestName
-					+ " ) 에 대응하는 값 이 없습니다.");
+			throw new RuntimeException("requestName ( " + requestName + " ) 에 대응하는 값 이 없습니다.");
 		}
 
 		// endpoint 추출 (Optional 이므로 에러 검사 안함)
@@ -128,8 +126,7 @@ public class XmlMetaManager implements IMetaManager {
 		// requestName 에 대응하는 값 추출
 		Request a = requestMap.get(requestName);
 		if (a == null) {
-			throw new RuntimeException("requestName ( " + requestName
-					+ " ) 에 대응하는 값 이 없습니다.");
+			throw new RuntimeException("requestName ( " + requestName + " ) 에 대응하는 값 이 없습니다.");
 		}
 
 		// cookieNeedLoaded 추출 (Optional 이므로 에러 검사 안함)
@@ -147,8 +144,7 @@ public class XmlMetaManager implements IMetaManager {
 		// requestName 에 대응하는 값 추출
 		Request a = requestMap.get(requestName);
 		if (a == null) {
-			throw new RuntimeException("requestName ( " + requestName
-					+ " ) 에 대응하는 값 이 없습니다.");
+			throw new RuntimeException("requestName ( " + requestName + " ) 에 대응하는 값 이 없습니다.");
 		}
 
 		// cookieNeedSaved 추출 (Optional 이므로 에러 검사 안함)
@@ -166,8 +162,7 @@ public class XmlMetaManager implements IMetaManager {
 		// requestName 에 대응하는 값 추출
 		Request a = requestMap.get(requestName);
 		if (a == null) {
-			throw new RuntimeException("requestName ( " + requestName
-					+ " ) 에 대응하는 값 이 없습니다.");
+			throw new RuntimeException("requestName ( " + requestName + " ) 에 대응하는 값 이 없습니다.");
 		}
 
 		// errorKeyAlwaysReturned 추출 (Optional 이므로 에러 검사 안함)
@@ -185,8 +180,7 @@ public class XmlMetaManager implements IMetaManager {
 		// requestName 에 대응하는 값 추출
 		Request a = requestMap.get(requestName);
 		if (a == null) {
-			throw new RuntimeException("requestName ( " + requestName
-					+ " ) 에 대응하는 값 이 없습니다.");
+			throw new RuntimeException("requestName ( " + requestName + " ) 에 대응하는 값 이 없습니다.");
 		}
 
 		// ssErrorCheckKey 추출 (Optional 이므로 에러 검사 안함)
@@ -204,8 +198,7 @@ public class XmlMetaManager implements IMetaManager {
 		// requestName 에 대응하는 값 추출
 		Request a = requestMap.get(requestName);
 		if (a == null) {
-			throw new RuntimeException("requestName ( " + requestName
-					+ " ) 에 대응하는 값 이 없습니다.");
+			throw new RuntimeException("requestName ( " + requestName + " ) 에 대응하는 값 이 없습니다.");
 		}
 
 		// ssErrorHitValue 추출 (Optional 이므로 에러 검사 안함)
@@ -213,7 +206,7 @@ public class XmlMetaManager implements IMetaManager {
 	}
 
 	@Override
-	public String getRequestSs(String requestName, String csVariableKey) {
+	public String getRequestSs(String requestName, String csKey) {
 
 		// 초기화 검사
 		if (requestMap == null) {
@@ -223,18 +216,17 @@ public class XmlMetaManager implements IMetaManager {
 		// requestName 에 대응하는 값 추출
 		Request a = requestMap.get(requestName);
 		if (a == null) {
-			throw new RuntimeException("requestName ( " + requestName
-					+ " ) 에 대응하는 값 이 없습니다.");
+			throw new RuntimeException("requestName ( " + requestName + " ) 에 대응하는 값 이 없습니다.");
 		}
 
 		// request 추출 (Optional 이므로 에러 검사 안함)
 		RequestMap requestMap = a.getRequestMap();
 
-		return getFromVariableMap(requestMap, csVariableKey);
+		return getFromVariableMap(requestMap, csKey);
 	}
 
 	@Override
-	public String getResultSs(String requestName, String csVariableKey) {
+	public String getResultSs(String requestName, String csKey) {
 
 		// 초기화 검사
 		if (requestMap == null) {
@@ -244,20 +236,19 @@ public class XmlMetaManager implements IMetaManager {
 		// requestName 에 대응하는 값 추출
 		Request a = requestMap.get(requestName);
 		if (a == null) {
-			throw new RuntimeException("requestName ( " + requestName
-					+ " ) 에 대응하는 값 이 없습니다.");
+			throw new RuntimeException("requestName ( " + requestName + " ) 에 대응하는 값 이 없습니다.");
 		}
 
 		// result 추출 (Optional 이므로 에러 검사 안함)
 		ResultMap result = a.getResultMap();
 
-		return getFromVariableMap(result, csVariableKey);
+		return getFromVariableMap(result, csKey);
 	}
 
-	private String getFromVariableMap(VariableMap vm, String csVariableKey) {
+	private String getFromVariableMap(VariableMap vm, String csKey) {
 
 		// 초기화 검사
-		if (vm == null || csVariableKey == null) {
+		if (vm == null || csKey == null) {
 			throw new RuntimeException("초기화 안됨");
 		}
 
@@ -267,14 +258,13 @@ public class XmlMetaManager implements IMetaManager {
 			throw new RuntimeException("VariableMap 이 없습니다.");
 		}
 
-		// csVariableKey 에 대응하는 ssVariableKey 추출
-		String ssVariableKey = variableMap.get(csVariableKey);
-		if (ssVariableKey == null) {
-			throw new RuntimeException("csVariableKey ( " + csVariableKey
-					+ " ) 에 대응하는 값이 없습니다.");
+		// csKey 에 대응하는 ssKey 추출
+		String ssKey = variableMap.get(csKey);
+		if (ssKey == null) {
+			throw new RuntimeException("csKey ( " + csKey + " ) 에 대응하는 값이 없습니다.");
 		}
 
-		return ssVariableKey;
+		return ssKey;
 	}
 
 	public String getXmlAssetFileName() {

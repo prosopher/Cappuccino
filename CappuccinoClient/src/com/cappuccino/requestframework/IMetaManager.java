@@ -17,7 +17,7 @@ package com.cappuccino.requestframework;
 
 public interface IMetaManager {
 
-	public abstract String getCommonSs(String csVariableKey);
+	public abstract String getCommonSs(String csKey);
 
 	public abstract String getType(String requestName);
 
@@ -33,8 +33,8 @@ public interface IMetaManager {
 
 	public abstract String getSSErrorHitValue(String requestName);
 
-	public abstract String getRequestSs(String requestName, String csVariableKey);
+	public abstract String getRequestSs(String requestName, String csKey);
 
-	public abstract String getResultSs(String requestName, String csVariableKey);
+	public abstract String getResultSs(String requestName, String csKey);
 
 }

@@ -19,23 +19,22 @@ public class RequestParam {
 
 	// cs : client side
 	// ss : server side
-	private String csVariableKey;
-	private String ssVariableKey;
+	private String csKey;
+	private String ssKey;
 	private String value;
 
-	public RequestParam(String csVariableKey, String ssVariableKey, String value) {
-
-		this.csVariableKey = csVariableKey;
-		this.ssVariableKey = ssVariableKey;
+	public RequestParam(String csKey, String ssKey, String value) {
+		this.csKey = csKey;
+		this.ssKey = ssKey;
 		this.value = value;
 	}
 
-	public String getCSVariableKey() {
-		return csVariableKey;
+	public String getCsKey() {
+		return csKey;
 	}
 
-	public String getSSVariableKey() {
-		return ssVariableKey;
+	public String getSsKey() {
+		return ssKey;
 	}
 
 	public String getValue() {
@@ -44,7 +43,8 @@ public class RequestParam {
 
 	@Override
 	public String toString() {
-		String ret = csVariableKey + " ( " + ssVariableKey + " ) : " + value;
+		String ret = csKey + " ( " + ssKey + " ) : " + value;
 		return ret;
 	}
+
 }

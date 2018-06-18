@@ -39,15 +39,13 @@ public class PostRequest extends Request {
 
 	// cs : client side
 	// ss : server side
-	PostRequest(PostRequestHelper pHelper,
-			PostExecuteListener<RequestResult> postExecuteListener) {
+	PostRequest(PostRequestHelper pHelper, PostExecuteListener<RequestResult> postExecuteListener) {
 		super(pHelper, postExecuteListener);
 		this.pHelper = pHelper;
 	}
 
 	@Override
-	protected HttpResponse makeRequest(DefaultHttpClient client,
-			boolean cookieNeedLoaded) {
+	protected HttpResponse makeRequest(DefaultHttpClient client, boolean cookieNeedLoaded) {
 
 		if (client == null) {
 			throw new IllegalArgumentException();
@@ -55,8 +53,7 @@ public class PostRequest extends Request {
 
 		if (RequestConfig.debuggable() == true) {
 			Log.e();
-			Log.e("<---------- " + pHelper.getRequestName()
-					+ " 요청 시작 -----------");
+			Log.e("<---------- " + pHelper.getRequestName() + " 요청 시작 -----------");
 			Log.e(pHelper);
 		}
 
@@ -70,8 +67,9 @@ public class PostRequest extends Request {
 
 		// 매개변수 등록
 		HttpEntity entity = pHelper.getHttpEntity();
-		if (entity != null)
+		if (entity != null) {
 			request.setEntity(entity);
+		}
 
 		// 요청 실행 후 응답 반환
 		HttpResponse response = null;
@@ -84,7 +82,6 @@ public class PostRequest extends Request {
 			// in case of a problem or the connection was aborted
 			throw new RuntimeException(e);
 		}
-
 		return response;
 	}
 

@@ -32,24 +32,20 @@ public class PostRequestHelper extends RequestHelper {
 	}
 
 	public HttpEntity getHttpEntity() {
-
 		// 매개변수 쌍 생성
 		ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
 
 		for (RequestParam param : params) {
-			nameValuePairs.add(new BasicNameValuePair(param.getSSVariableKey(),
-					param.getValue()));
+			nameValuePairs.add(new BasicNameValuePair(param.getSsKey(), param.getValue()));
 		}
 
 		// HttpEtity 생성
 		HttpEntity entity = null;
-
 		try {
 			entity = new UrlEncodedFormEntity(nameValuePairs, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			throw new RuntimeException(e);
 		}
-
 		return entity;
 	}
 
