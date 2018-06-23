@@ -2,6 +2,7 @@ package com.cappuccino.struct;
 
 import java.util.AbstractList;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -29,6 +30,11 @@ public class SortedList<E> extends AbstractList<E> {
 	@Override
 	public boolean remove(Object object) {
 		return internalList.remove(object);
+	}
+
+	@Override
+	public boolean removeAll(Collection<?> collection) {
+		return internalList.removeAll(collection);
 	}
 
 	@Override
